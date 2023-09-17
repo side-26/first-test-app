@@ -1,16 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import UserForm from './components/userForm';
+import UserList from './components/usersList';
+import { useState } from 'react';
 
 function App() {
+  const [usersList, setUsersList] = useState([{ name: 'hello', email: 'hello@hello.com' }])
+  const addNewUser = (user) => {
+    setUsersList([...usersList, user])
+  }
   return (
     <>
-      {/* <form>
-        <input type="text" name='' />
-        <input type="text" name='' />
-        <button>
-          submit
-        </button>
-      </form> */}
+      <UserForm addNewUser={addNewUser} />
+      <UserList list={usersList}  />
     </>
   );
 }
